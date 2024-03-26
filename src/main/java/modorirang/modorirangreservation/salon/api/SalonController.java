@@ -21,10 +21,11 @@ public class SalonController {
 
     private final SalonServiceImpl salonService;
 
-
     @PostMapping
     public ResponseEntity<Salon> schedule(@RequestBody SalonCreationRequest request) {
         Salon salon = salonService.create(request.getDayOfMonths(), request.getStartTime(), request.getEndTime());
         return ResponseEntity.ok(salon);
     }
+
+
 }

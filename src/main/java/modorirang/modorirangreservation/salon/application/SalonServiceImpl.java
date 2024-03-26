@@ -30,13 +30,12 @@ public class SalonServiceImpl {
 
             String dayOfMonth = String.valueOf(date.getDayOfMonth()); // `일`
 
-            List<SalonTime> dailyTimes = Stream.iterate(startTime, time -> time.plusMinutes(30))
-                    .filter(time -> !time.isAfter(endTime))
+            List<SalonTime> dailyTimes = Stream.iterate(
+                    startTime, time -> !time.isAfter(endTime), time -> time.plusMinutes(30))
                     .map(time -> SalonTime.builder()
                             .reservation(false)
                             .time(time)
                             .build())
-                    .limit(endTime.getHour())
                     .toList();
 
             times.put(dayOfMonth, dailyTimes);

@@ -17,12 +17,10 @@ import java.util.Map;
 @Slf4j
 @Entity
 @Getter
-@ToString
 @SuperBuilder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class Salon extends BaseEntity {
-
 
     @Type(JsonType.class)
     @Comment("예약 시간")
